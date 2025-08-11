@@ -5,6 +5,7 @@ import { useFirestore } from '@/hooks/useFirestore';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
   const { blogPosts, fetchBlogPosts, loading } = useFirestore();
@@ -88,13 +89,15 @@ const Blog = () => {
                     {post.excerpt}
                   </CardDescription>
 
-                  <Button 
-                    variant="outline" 
-                    className="w-full group-hover:bg-herbal-primary group-hover:text-pure-white transition-all duration-300"
-                  >
-                    Read More
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  <Link to={`/blog/${post.id}`}>
+                    <Button 
+                      variant="outline" 
+                      className="w-full group-hover:bg-herbal-primary group-hover:text-pure-white transition-all duration-300"
+                    >
+                      Read More
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}

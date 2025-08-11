@@ -12,9 +12,15 @@ interface ServiceModalProps {
   open: boolean;
   onClose: () => void;
   editingService?: Service | null;
+  onServiceUpdated?: () => void;  // Add callback for when service is updated
 }
 
-const ServiceModal: React.FC<ServiceModalProps> = ({ open, onClose, editingService }) => {
+const ServiceModal: React.FC<ServiceModalProps> = ({ 
+  open, 
+  onClose, 
+  editingService,
+  onServiceUpdated 
+}) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -25,10 +31,24 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ open, onClose, editingServi
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const { addService, updateService, uploadImage } = useFirestore();
+  const { addService, updateService, uploadImage, fetchServices } = useFirestore();
   const { toast } = useToast();
 
+  // Make sure form is reset when modal opens/closes
   useEffect(() => {
+    if (!open) {
+      // Reset form when modal closes
+      setFormData({
+        title: '',
+        description: '',
+        features: '',
+        icon: '',
+        imageUrl: ''
+      });
+      setImageFile(null);
+      return;
+    }
+    
     if (editingService) {
       setFormData({
         title: editingService.title || '',
@@ -69,17 +89,30 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ open, onClose, editingServi
       };
 
       if (editingService?.id) {
+        // Update existing service
         await updateService(editingService.id, serviceData);
         toast({
           title: "Service Updated",
           description: "Service has been updated successfully",
         });
+        
+        // Force refresh services list
+        await fetchServices();
+        
+        // Call callback if provided
+        if (onServiceUpdated) {
+          onServiceUpdated();
+        }
       } else {
+        // Add new service
         await addService(serviceData);
         toast({
           title: "Service Added",
           description: "New service has been added successfully",
         });
+        
+        // Force refresh services list
+        await fetchServices();
       }
 
       onClose();
@@ -89,6 +122,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ open, onClose, editingServi
         description: "Failed to save service",
         variant: "destructive",
       });
+      console.error("Error saving service:", error);
     } finally {
       setLoading(false);
     }
@@ -103,7 +137,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ open, onClose, editingServi
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="font-heading text-xl font-bold text-deep-brown">
             {editingService ? 'Edit Service' : 'Add New Service'}
@@ -197,11 +231,22 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ open, onClose, editingServi
             )}
           </div>
 
-          <div className="flex gap-3 pt-4">
-            <Button type="button" variant="outline" onClick={onClose} className="flex-1">
+          <div className="flex gap-3 pt-6 border-t sticky bottom-0 bg-white">
+            <Button 
+              type="button" 
+              variant="outline" 
+              onClick={onClose} 
+              className="flex-1"
+              disabled={loading}
+            >
               Cancel
             </Button>
-            <Button type="submit" disabled={loading} className="flex-1">
+            <Button 
+              type="submit" 
+              disabled={loading} 
+              className="flex-1 bg-herbal-primary hover:bg-herbal-primary/90"
+              variant="default"
+            >
               {loading ? (
                 <>
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />

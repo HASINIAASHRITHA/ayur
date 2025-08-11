@@ -108,16 +108,23 @@ export const useFirestore = () => {
     }
   };
 
-  const updateService = async (id: string, service: Partial<Service>) => {
+  const updateService = async (id: string, serviceData: Omit<Service, 'id'>) => {
     try {
-      setLoading(true);
-      await updateDoc(doc(db, 'services', id), service);
-      await fetchServices();
+      // Update the service document in Firestore
+      const serviceRef = doc(db, 'services', id);
+      await updateDoc(serviceRef, { ...serviceData });
+      
+      // Update the local state with the new data
+      setServices(prevServices => 
+        prevServices.map(service => 
+          service.id === id ? { ...service, ...serviceData, id } : service
+        )
+      );
+      
+      return true;
     } catch (error) {
-      console.error('Error updating service:', error);
+      console.error("Error updating service:", error);
       throw error;
-    } finally {
-      setLoading(false);
     }
   };
 

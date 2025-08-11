@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useFirestore } from '@/hooks/useFirestore';
 import { Stethoscope, Brain, Heart, Bone, Baby, Flower } from 'lucide-react';
 import ayurvedicHerbs from '@/assets/ayurvedic-herbs.jpg';
+import { getServiceImage } from '@/assets/service-images';
 import AppointmentBookingModal from '@/components/AppointmentBookingModal';
 
 const Services = () => {
@@ -79,7 +80,7 @@ const Services = () => {
                     <CardContent className="space-y-4">
                       <div className="aspect-video rounded-lg overflow-hidden mb-4">
                         <img
-                          src={service.imageUrl || ayurvedicHerbs}
+                          src={service.imageUrl || getServiceImage(service.title) || ayurvedicHerbs}
                           alt={service.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />

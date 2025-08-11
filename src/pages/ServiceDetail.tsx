@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import AppointmentBookingModal from '@/components/AppointmentBookingModal';
 import { useFirestore, Service } from '@/hooks/useFirestore';
 import ayurvedicHerbs from '@/assets/ayurvedic-herbs.jpg';
+import { getServiceImage } from '@/assets/service-images';
 
 const ServiceDetail = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
@@ -78,7 +79,10 @@ const ServiceDetail = () => {
           {/* Back Navigation */}
           <div className="mb-8">
             <Link to="/services">
-              <Button variant="outline" className="mb-4">
+              <Button 
+                variant="outline" 
+                className="mb-4 text-deep-brown border-deep-brown hover:bg-herbal-primary hover:text-pure-white"
+              >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Services
               </Button>
@@ -117,7 +121,7 @@ const ServiceDetail = () => {
                   variant="outline" 
                   size="lg"
                   onClick={() => window.open('tel:+919848162013')}
-                  className="flex-1 sm:flex-none"
+                  className="flex-1 sm:flex-none text-deep-brown border-deep-brown hover:bg-herbal-primary hover:text-pure-white"
                 >
                   Call for Info
                 </Button>
@@ -127,7 +131,7 @@ const ServiceDetail = () => {
             <div className="space-y-6">
               <div className="aspect-video rounded-xl overflow-hidden shadow-premium">
                 <img
-                  src={service.imageUrl || ayurvedicHerbs}
+                  src={service.imageUrl || getServiceImage(service.title) || ayurvedicHerbs}
                   alt={service.title}
                   className="w-full h-full object-cover"
                 />
@@ -236,6 +240,7 @@ const ServiceDetail = () => {
                   variant="secondary" 
                   size="lg" 
                   onClick={() => setBookingModalOpen(true)}
+                  className="text-deep-brown bg-gold-soft hover:bg-gold-soft/90"
                 >
                   Book Your Consultation
                 </Button>

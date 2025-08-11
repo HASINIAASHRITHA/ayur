@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { getDoctorImage } from '@/assets/doctor-images';
 
 const About = () => {
   return (
@@ -120,10 +121,22 @@ const About = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="shadow-premium">
+              {/* Dr. Basavaiah */}
+              <Card className="shadow-premium hover-lift transition-all duration-300">
                 <CardContent className="p-6 text-center">
-                  <div className="w-24 h-24 bg-gradient-gold rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-2xl">👨‍⚕️</span>
+                  <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-gold-soft shadow-premium">
+                    <img
+                      src={getDoctorImage('Dr. Basavaiah')}
+                      alt="Dr. Basavaiah"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        if (target.src !== '/doctor-images/male-doctor.jpg') {
+                          target.src = '/doctor-images/male-doctor.jpg';
+                          target.onerror = null; // Prevent infinite error loop
+                        }
+                      }}
+                    />
                   </div>
                   <h4 className="text-xl font-semibold text-deep-brown mb-2">Dr. Basavaiah</h4>
                   <Badge variant="secondary" className="mb-3">Founder</Badge>
@@ -138,10 +151,22 @@ const About = () => {
                 </CardContent>
               </Card>
 
-              <Card className="shadow-premium">
+              {/* Dr. Priya Sharma */}
+              <Card className="shadow-premium hover-lift transition-all duration-300">
                 <CardContent className="p-6 text-center">
-                  <div className="w-24 h-24 bg-gradient-gold rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-2xl">👩‍⚕️</span>
+                  <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-gold-soft shadow-premium">
+                    <img
+                      src={getDoctorImage('Dr. Priya Sharma')}
+                      alt="Dr. Priya Sharma"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        if (target.src !== '/doctor-images/female-doctor.jpg') {
+                          target.src = '/doctor-images/female-doctor.jpg';
+                          target.onerror = null;
+                        }
+                      }}
+                    />
                   </div>
                   <h4 className="text-xl font-semibold text-deep-brown mb-2">Dr. Priya Sharma</h4>
                   <Badge variant="secondary" className="mb-3">Senior Consultant</Badge>
@@ -156,10 +181,22 @@ const About = () => {
                 </CardContent>
               </Card>
 
-              <Card className="shadow-premium">
+              {/* Dr. Rajesh Kumar */}
+              <Card className="shadow-premium hover-lift transition-all duration-300">
                 <CardContent className="p-6 text-center">
-                  <div className="w-24 h-24 bg-gradient-gold rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-2xl">👨‍⚕️</span>
+                  <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-gold-soft shadow-premium">
+                    <img
+                      src={getDoctorImage('Dr. Rajesh Kumar')}
+                      alt="Dr. Rajesh Kumar"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        if (target.src !== '/doctor-images/male-doctor.jpg') {
+                          target.src = '/doctor-images/male-doctor.jpg';
+                          target.onerror = null;
+                        }
+                      }}
+                    />
                   </div>
                   <h4 className="text-xl font-semibold text-deep-brown mb-2">Dr. Rajesh Kumar</h4>
                   <Badge variant="secondary" className="mb-3">Consultant</Badge>

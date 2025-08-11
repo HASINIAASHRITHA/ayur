@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useFirestore } from '@/hooks/useFirestore';
 import { useRealtimeAppointments } from '@/hooks/useRealtimeAppointments';
@@ -44,6 +44,14 @@ const AdminDashboard = () => {
   // Search and filter states
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  // Fetch services when refreshTrigger changes
+  useEffect(() => {
+    if (refreshTrigger > 0) {
+      // Logic to refetch services
+    }
+  }, [refreshTrigger]);
 
   const handleLogout = async () => {
     try {
@@ -89,6 +97,11 @@ const AdminDashboard = () => {
         variant: "destructive",
       });
     }
+  };
+
+  const handleServiceUpdated = () => {
+    // Increment refreshTrigger to force refresh
+    setRefreshTrigger(prev => prev + 1);
   };
 
   const closeModals = () => {
@@ -547,6 +560,7 @@ const AdminDashboard = () => {
         open={serviceModalOpen} 
         onClose={closeModals}
         editingService={editingItem}
+        onServiceUpdated={handleServiceUpdated}
       />
       <BlogModal 
         open={blogModalOpen} 
