@@ -73,14 +73,14 @@ const Emergency = () => {
             </CardHeader>
             <CardContent className="text-center space-y-4">
               <div className="text-3xl font-bold text-red-700">
-                +91-891-987-6543
+                +91 98481 62013
               </div>
               <p className="text-red-600">Available 24/7 for immediate assistance</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
                 <Button 
                   variant="destructive" 
                   size="lg"
-                  onClick={() => window.open('tel:+91-891-987-6543')}
+                  onClick={() => window.open('tel:+919848162013')}
                   className="bg-red-600 hover:bg-red-700"
                 >
                   <Phone className="w-5 h-5 mr-2" />
@@ -89,7 +89,7 @@ const Emergency = () => {
                 <Button 
                   variant="outline" 
                   size="lg"
-                  onClick={() => window.open('sms:+91-891-987-6543')}
+                  onClick={() => window.open('sms:+919848162013')}
                   className="border-red-600 text-red-600 hover:bg-red-50"
                 >
                   Send Emergency SMS
@@ -112,9 +112,9 @@ const Emergency = () => {
                   Dr. Basavaiah Ayurveda Hospital
                 </p>
                 <p className="font-medium">
-                  Venkataraju Nagar<br />
-                  Visakhapatnam, Andhra Pradesh<br />
-                  PIN: 530017
+                  54- 5 - 6, Sivalayam Edhuruga,<br />
+                  Lankada vari peta, Jagannaickpur,<br />
+                  Kakinada, Andhra Pradesh 533002
                 </p>
               </CardContent>
             </Card>

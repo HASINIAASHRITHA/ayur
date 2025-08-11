@@ -98,8 +98,9 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-gold-soft mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-pure-white/80 text-sm">
-                    Venkataraju Nagar<br />
-                    Visakhapatnam, AP 530018
+                    54- 5 - 6, Sivalayam Edhuruga,<br />
+                    Lankada vari peta, Jagannaickpur,<br />
+                    Kakinada, Andhra Pradesh 533002
                   </p>
                 </div>
               </div>
@@ -107,8 +108,8 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gold-soft flex-shrink-0" />
                 <div>
-                  <p className="text-pure-white/80 text-sm">+91-891-123-4567</p>
-                  <p className="text-red-400 text-sm">Emergency: +91-891-987-6543</p>
+                  <p className="text-pure-white/80 text-sm">+91 98481 62013</p>
+                  <p className="text-red-400 text-sm">Emergency: +91 98481 62013</p>
                 </div>
               </div>
               

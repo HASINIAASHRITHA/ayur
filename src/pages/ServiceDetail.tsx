@@ -116,7 +116,7 @@ const ServiceDetail = () => {
                 <Button 
                   variant="outline" 
                   size="lg"
-                  onClick={() => window.open('tel:+91-891-123-4567')}
+                  onClick={() => window.open('tel:+919848162013')}
                   className="flex-1 sm:flex-none"
                 >
                   Call for Info
@@ -243,9 +243,9 @@ const ServiceDetail = () => {
                   variant="outline" 
                   size="lg"
                   className="border-pure-white text-pure-white hover:bg-pure-white hover:text-herbal-primary"
-                  onClick={() => window.open('tel:+91-891-123-4567')}
+                  onClick={() => window.open('tel:+919848162013')}
                 >
-                  Call Now: +91-891-123-4567
+                  Call Now: +91 98481 62013
                 </Button>
               </div>
             </CardContent>

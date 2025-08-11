@@ -41,10 +41,10 @@ interface SiteSettings {
 const defaultSettings: SiteSettings = {
   siteName: 'Dr. Basavaiah Ayurveda Hospital',
   siteDescription: 'Authentic Ayurvedic healing since 1938',
-  contactPhone: '+91-891-123-4567',
+  contactPhone: '+91 98481 62013',
   contactEmail: 'info@basavaiahayurveda.com',
-  address: 'Venkataraju Nagar, Visakhapatnam, Andhra Pradesh',
-  emergencyPhone: '+91-891-987-6543',
+  address: '54- 5 - 6, Sivalayam Edhuruga, Lankada vari peta, Jagannaickpur, Kakinada, Andhra Pradesh 533002',
+  emergencyPhone: '+91 98481 62013',
   workingHours: 'Mon-Sat: 8:00 AM - 8:00 PM, Sun: 9:00 AM - 6:00 PM',
   aboutText: 'Experience the power of authentic Ayurvedic healing at Dr. Basavaiah Ayurveda Hospital. Trusted by over 50,000 patients since 1938.',
   socialMedia: {
@@ -55,8 +55,8 @@ const defaultSettings: SiteSettings = {
   },
   seo: {
     metaTitle: 'Dr. Basavaiah Ayurveda Hospital | Authentic Ayurvedic Treatment Since 1938',
-    metaDescription: 'Experience authentic Ayurvedic healing at Dr. Basavaiah Ayurveda Hospital in Visakhapatnam. Trusted by 50,000+ patients since 1938.',
-    keywords: 'ayurveda hospital, ayurvedic treatment, natural healing, visakhapatnam, dr basavaiah'
+    metaDescription: 'Experience authentic Ayurvedic healing at Dr. Basavaiah Ayurveda Hospital in Kakinada. Trusted by 50,000+ patients since 1938.',
+    keywords: 'ayurveda hospital, ayurvedic treatment, natural healing, kakinada, dr basavaiah'
   }
 };
 

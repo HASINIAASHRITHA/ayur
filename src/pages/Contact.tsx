@@ -99,8 +99,7 @@ const Contact = () => {
                     <Phone className="w-8 h-8 text-deep-brown" />
                   </div>
                   <h3 className="font-semibold text-deep-brown mb-2">Phone</h3>
-                  <p className="text-muted-foreground">+91 98765 43210</p>
-                  <p className="text-muted-foreground">+91 80 2234 5678</p>
+                  <p className="text-muted-foreground">+91 98481 62013</p>
                 </CardContent>
               </Card>
 
@@ -122,9 +121,9 @@ const Contact = () => {
                   </div>
                   <h3 className="font-semibold text-deep-brown mb-2">Address</h3>
                   <p className="text-muted-foreground text-sm">
-                    123 Ayurveda Street,<br />
-                    Wellness District,<br />
-                    Bangalore - 560001
+                    54- 5 - 6, Sivalayam Edhuruga,<br />
+                    Lankada vari peta, Jagannaickpur,<br />
+                    Kakinada, Andhra Pradesh 533002
                   </p>
                 </CardContent>
               </Card>
@@ -299,7 +298,7 @@ const Contact = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg">
-                Call Emergency: +91 98765 43210
+                Call Emergency: +91 98481 62013
               </Button>
               <Button variant="outline" size="lg">
                 Book Immediate Consultation

@@ -68,18 +68,18 @@ const ContactSection = () => {
       title: "Visit Us",
       details: [
         "Dr. Basavaiah Ayurveda Hospital",
-        "Venkataraju Nagar",
-        "Visakhapatnam, Andhra Pradesh",
-        "PIN: 530018"
+        "54- 5 - 6, Sivalayam Edhuruga",
+        "Lankada vari peta, Jagannaickpur",
+        "Kakinada, Andhra Pradesh 533002"
       ]
     },
     {
       icon: Phone,
       title: "Call Us",
       details: [
-        "Main: +91-891-123-4567",
-        "Emergency: +91-891-987-6543",
-        "WhatsApp: +91-9876543210"
+        "Main: +91 98481 62013",
+        "Emergency: +91 98481 62013",
+        "WhatsApp: +91 98481 62013"
       ]
     },
     {
