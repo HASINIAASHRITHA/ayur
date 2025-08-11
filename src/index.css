@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dr. Basavaiah Ayurveda Hospital Design System 
+Premium Ayurvedic healing aesthetic with natural, luxurious colors
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Ayurvedic Color Palette */
+    --background: 44 41% 92%; /* Parchment beige #EDE3D0 */
+    --foreground: 23 17% 17%; /* Deep brown #2E2A26 */
+
+    --card: 0 0% 100%; /* Pure white for cards */
+    --card-foreground: 23 17% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 23 17% 17%;
+
+    /* Primary: Herbal Green */
+    --primary: 82 16% 46%; /* Herbal green #7B8B5F */
+    --primary-foreground: 0 0% 100%; /* White text on herbal green */
+
+    /* Secondary: Soft Gold */
+    --secondary: 44 46% 54%; /* Soft gold #C9A14A */
+    --secondary-foreground: 23 17% 17%; /* Deep brown on gold */
+
+    /* Muted: Lighter herbal tones */
+    --muted: 82 16% 85%; /* Light herbal green */
+    --muted-foreground: 82 16% 35%; /* Darker herbal green */
+
+    /* Accent: Premium gold highlight */
+    --accent: 44 56% 64%; /* Brighter gold for accents */
+    --accent-foreground: 23 17% 17%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 44 20% 85%; /* Soft beige border */
+    --input: 44 20% 88%; /* Light beige input */
+    --ring: 82 16% 46%; /* Herbal green focus ring */
+
+    --radius: 0.75rem; /* More rounded for premium feel */
+
+    /* Custom Ayurvedic Design Tokens */
+    --herbal-primary: 82 16% 46%; /* #7B8B5F */
+    --parchment: 44 41% 92%; /* #EDE3D0 */
+    --soft-gold: 44 46% 54%; /* #C9A14A */
+    --deep-brown: 23 17% 17%; /* #2E2A26 */
+    --pure-white: 0 0% 100%; /* #FFFFFF */
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--herbal-primary)), hsl(var(--parchment)));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--soft-gold)), hsl(var(--parchment)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--herbal-primary) / 0.9), hsl(var(--soft-gold) / 0.7));
+    
+    /* Shadows */
+    --shadow-premium: 0 10px 30px -10px hsl(var(--herbal-primary) / 0.3);
+    --shadow-gold: 0 8px 25px -8px hsl(var(--soft-gold) / 0.4);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--deep-brown) / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-gentle: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body leading-relaxed;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold leading-tight;
+  }
+
+  /* Responsive typography */
+  @screen sm {
+    html { font-size: 16px; }
+  }
+  
+  @screen md {
+    html { font-size: 17px; }
+  }
+  
+  @screen lg {
+    html { font-size: 18px; }
+  }
+}
+
+@layer utilities {
+  /* Typography utilities */
+  .font-heading {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-body {
+    font-family: 'Lato', sans-serif;
+  }
+
+  /* Background utilities using design tokens */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+  
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  /* Shadow utilities */
+  .shadow-premium {
+    box-shadow: var(--shadow-premium);
+  }
+  
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Animation utilities */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-gentle {
+    transition: var(--transition-gentle);
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-smooth;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .hover-glow {
+    @apply transition-smooth;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--shadow-gold);
+  }
+}
