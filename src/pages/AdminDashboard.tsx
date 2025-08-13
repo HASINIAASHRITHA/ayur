@@ -15,6 +15,9 @@ import ServiceModal from '@/components/admin/ServiceModal';
 import BlogModal from '@/components/admin/BlogModal';
 import TestimonialModal from '@/components/admin/TestimonialModal';
 import SettingsModal from '@/components/admin/SettingsModal';
+import { sendWhatsAppNotification } from '@/lib/whatsapp';
+import { MessageSquareText } from "lucide-react";
+import WhatsAppMessageMenu from '@/components/admin/WhatsAppMessageMenu';
 
 const AdminDashboard = () => {
   const { currentUser, logout } = useAuth();
@@ -110,6 +113,44 @@ const AdminDashboard = () => {
     setTestimonialModalOpen(false);
     setSettingsModalOpen(false);
     setEditingItem(null);
+  };
+
+  const handleSendWhatsAppMessage = async (appointment: any, messageType: 'reminder' | 'confirmation' | 'cancellation' = 'reminder') => {
+    try {
+      // Create appointment data from the appointment object
+      const appointmentData = {
+        name: appointment.name,
+        email: appointment.email,
+        phone: appointment.phone,
+        message: appointment.message || '',
+        preferredDate: appointment.preferredDate || '',
+        preferredTime: appointment.preferredTime || '',
+        status: appointment.status
+      };
+
+      // Add the message type to the data
+      const dataToSend = { 
+        ...appointmentData, 
+        messageType
+      };
+
+      // Send the WhatsApp notification
+      await sendWhatsAppNotification('appointment', dataToSend, true);
+      
+      // Show toast notification
+      toast({
+        title: "WhatsApp Message Sent",
+        description: `Message sent to ${appointment.name} successfully.`,
+      });
+      
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send WhatsApp message.",
+        variant: "destructive",
+      });
+      console.error('Error sending WhatsApp message:', error);
+    }
   };
 
   // Filter and search appointments
@@ -347,6 +388,12 @@ const AdminDashboard = () => {
                                 Complete
                               </Button>
                             )}
+                            {/* Add Send WhatsApp Message Button */}
+                            {appointment.phone && (
+                              <WhatsAppMessageMenu 
+                                onSendMessage={(messageType) => handleSendWhatsAppMessage(appointment, messageType)}
+                              />
+                            )}
                             <Button 
                               size="sm" 
                               variant="destructive"
@@ -553,29 +600,29 @@ const AdminDashboard = () => {
             </Tabs>
           </CardContent>
         </Card>
-      </div>
 
-      {/* Modals */}
-      <ServiceModal 
-        open={serviceModalOpen} 
-        onClose={closeModals}
-        editingService={editingItem}
-        onServiceUpdated={handleServiceUpdated}
-      />
-      <BlogModal 
-        open={blogModalOpen} 
-        onClose={closeModals}
-        editingPost={editingItem}
-      />
-      <TestimonialModal 
-        open={testimonialModalOpen} 
-        onClose={closeModals}
-        editingTestimonial={editingItem}
-      />
-      <SettingsModal 
-        open={settingsModalOpen} 
-        onClose={() => setSettingsModalOpen(false)}
-      />
+        {/* Modals */}
+        <ServiceModal 
+          open={serviceModalOpen} 
+          onClose={closeModals}
+          editingService={editingItem}
+          onServiceUpdated={handleServiceUpdated}
+        />
+        <BlogModal 
+          open={blogModalOpen} 
+          onClose={closeModals}
+          editingPost={editingItem}
+        />
+        <TestimonialModal 
+          open={testimonialModalOpen} 
+          onClose={closeModals}
+          editingTestimonial={editingItem}
+        />
+        <SettingsModal 
+          open={settingsModalOpen} 
+          onClose={() => setSettingsModalOpen(false)}
+        />
+      </div>
     </div>
   );
 };

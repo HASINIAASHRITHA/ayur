@@ -28,11 +28,11 @@ const Header = () => {
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
             <div className="flex items-center gap-2">
               <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="text-xs sm:text-sm">Emergency: +91-891-123-4567</span>
+              <span className="text-xs sm:text-sm">Emergency: +91-9848162013</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="text-xs sm:text-sm truncate">Venkataraju Nagar, Visakhapatnam</span>
+              <span className="text-xs sm:text-sm truncate">Jagannaickpur,Kakinada</span>
             </div>
           </div>
           <div className="hidden lg:block">

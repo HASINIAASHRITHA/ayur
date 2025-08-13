@@ -65,9 +65,9 @@ const AppointmentBookingModal: React.FC<AppointmentBookingModalProps> = ({
 
       await addAppointment(appointmentData);
 
-      // Send WhatsApp notification
+      // Send WhatsApp notification to both admin and user
       try {
-        await sendWhatsAppNotification('appointment', appointmentData);
+        await sendWhatsAppNotification('appointment', appointmentData, true);
       } catch (whatsappError) {
         console.error('WhatsApp notification failed:', whatsappError);
         // Don't fail the appointment booking if WhatsApp fails
@@ -92,6 +92,7 @@ const AppointmentBookingModal: React.FC<AppointmentBookingModalProps> = ({
         description: "Please try again or call us directly.",
         variant: "destructive",
       });
+      console.error("Error booking appointment:", error);
     } finally {
       setLoading(false);
     }

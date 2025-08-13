@@ -121,7 +121,7 @@ const ServicesSection = () => {
               Book Consultation
             </Button>
             <Button variant="outline" size="lg">
-              Call Now: +91-891-123-4567
+              Call Now: +91-98481 62013
             </Button>
           </div>
         </div>

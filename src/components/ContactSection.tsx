@@ -42,9 +42,9 @@ const ContactSection = () => {
 
       await submitContactMessage(contactData);
 
-      // Send WhatsApp notification
+      // Send WhatsApp notification to both admin and user
       try {
-        await sendWhatsAppNotification('contact', contactData);
+        await sendWhatsAppNotification('contact', contactData, true);
       } catch (whatsappError) {
         console.error('WhatsApp notification failed:', whatsappError);
       }
@@ -114,8 +114,8 @@ const ContactSection = () => {
       <section id="contact" className="py-20 bg-gradient-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl lg:text-5xl font-bold text-deep-brown mb-6">
+        <div className="text-center mb-10">
+          <h2 className="font-heading text-4xl lg:text-5xl font-bold text-deep-brown mb-4">
             Get In Touch
           </h2>
           <p className="text-xl text-deep-brown/80 max-w-3xl mx-auto leading-relaxed">
@@ -124,7 +124,7 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Form */}
           <Card className="shadow-premium bg-pure-white">
             <CardHeader>
@@ -218,25 +218,25 @@ const ContactSection = () => {
           </Card>
 
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {contactInfo.map((info, index) => (
               <Card 
                 key={info.title}
-                className="bg-pure-white shadow-soft hover:shadow-gold transition-all duration-300 hover-lift animate-fade-up"
+                className="bg-pure-white shadow-soft hover:shadow-gold transition-all duration-300 hover-lift animate-fade-up h-full"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-4">
+                <CardContent className="p-4">
+                  <div className="flex items-start space-x-3">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-gradient-gold rounded-full flex items-center justify-center">
-                        <info.icon className="w-6 h-6 text-deep-brown" />
+                      <div className="w-10 h-10 bg-gradient-gold rounded-full flex items-center justify-center">
+                        <info.icon className="w-5 h-5 text-deep-brown" />
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-heading text-lg font-bold text-deep-brown mb-3">
+                      <h3 className="font-heading text-lg font-bold text-deep-brown mb-2">
                         {info.title}
                       </h3>
-                      <div className="space-y-1">
+                      <div className="space-y-1 text-sm">
                         {info.details.map((detail, idx) => (
                           <p key={idx} className="text-muted-foreground">
                             {detail}
@@ -250,11 +250,11 @@ const ContactSection = () => {
             ))}
 
             {/* Google Maps Placeholder */}
-            <Card className="bg-pure-white shadow-premium">
+            <Card className="bg-pure-white shadow-premium md:col-span-2">
               <CardContent className="p-0">
-                <div className="h-64 bg-gradient-gold rounded-lg flex items-center justify-center">
+                <div className="h-48 bg-gradient-gold rounded-lg flex items-center justify-center">
                   <div className="text-center">
-                    <MapPin className="w-12 h-12 text-deep-brown mx-auto mb-4" />
+                    <MapPin className="w-10 h-10 text-deep-brown mx-auto mb-2" />
                     <p className="text-deep-brown font-medium">
                       Google Maps Integration
                     </p>
@@ -267,12 +267,12 @@ const ContactSection = () => {
             </Card>
 
             {/* Emergency Contact */}
-            <Card className="bg-red-50 border-red-200 shadow-soft">
-              <CardContent className="p-6 text-center">
+            <Card className="bg-red-50 border-red-200 shadow-soft md:col-span-2">
+              <CardContent className="p-4 text-center">
                 <h3 className="font-heading text-lg font-bold text-red-800 mb-2">
                   Medical Emergency?
                 </h3>
-                <p className="text-red-700 mb-4">
+                <p className="text-red-700 mb-2">
                   For urgent medical assistance, call our emergency line immediately.
                 </p>
                 <Button variant="emergency" size="lg" className="w-full">
